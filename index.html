@@ -21,9 +21,16 @@
         }
         .options {
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
+            align-items: center;
             margin-top: 20px;
+        }
+        .rounded-button {
+            border: none;
+            border-radius: 25px;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
         }
         .option-card {
             text-align: center;
@@ -31,7 +38,7 @@
             border: none;
             border-radius: 50%; /* Make it circular */
             padding: 20px;
-            background-color: darkred;
+            background-color: lightgreen; /* Change to lightorange if desired */
             color: white;
             cursor: pointer;
             margin-bottom: 20px;
@@ -41,32 +48,25 @@
         .option-card:hover {
             transform: scale(1.1);
         }
-        .option-card img {
-            max-width: 100%;
-            max-height: 100%;
-            border-radius: 50%;
-        }
         .button-name {
             margin-top: 10px;
         }
-        .symbol-create {
-            text-align: center;
+        .all-tournaments {
             margin-top: 20px;
         }
-        .floating-button {
-            background-color: darkred;
-            color: white;
+        .rounded-option {
+            text-align: center;
             border: none;
-            border-radius: 50%;
-            padding: 10px 20px;
+            border-radius: 25px;
+            padding: 15px 30px;
             font-size: 16px;
+            background-color: lightgreen; /* Change to lightorange if desired */
+            color: white;
             cursor: pointer;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
+            display: inline-block;
             transition: transform 0.3s ease-out;
         }
-        .floating-button:hover {
+        .rounded-option:hover {
             transform: scale(1.1);
         }
     </style>
@@ -77,41 +77,27 @@
     </div>
     <div class="content">
         <div class="options">
-            <div class="option-card" onclick="fetchLogo('create-team')">Create Team</div>
-            <div class="option-card" onclick="fetchLogo('import-tourney')">Import Tourney</div>
-            <div class="option-card" onclick="fetchLogo('import-team')">Import Team</div>
-            <div class="option-card" onclick="fetchLogo('merge-tourney')">Merge Tourney</div>
+            <div class="option-card" onclick="showAI('Create Tournament')">Create Tournament</div>
+            <div class="option-card" onclick="showAI('Import Tourney')">Import Tourney</div>
+            <div class="option-card" onclick="showAI('Import Team')">Import Team</div>
+            <div class="option-card" onclick="showAI('Manage Tourney')">Manage Tourney</div>
         </div>
-        <div>
-            <p>All Tournament</p>
+        <div class="all-tournaments">
+            <p>All Tournaments</p>
             <!-- Use PHP to fetch and display tournaments -->
         </div>
-        <div class="symbol-create">
-            <!-- Circular option of symbol create -->
-        </div>
-        <button class="floating-button" id="create-button">Create</button>
+        <div class="rounded-option" onclick="createSomething()">Create</div>
     </div>
 
     <script>
-        function fetchLogo(company) {
-            const apiUrl = `https://getlogoapi.com/api/v1/logos/${company}.png`;
-
-            const imgElement = document.createElement('img');
-            imgElement.src = apiUrl;
-            imgElement.alt = company;
-            const optionCard = document.querySelector(`.option-card:contains('${company}')`);
-            optionCard.innerHTML = '';
-            optionCard.appendChild(imgElement);
-            const buttonName = document.createElement('div');
-            buttonName.classList.add('button-name');
-            buttonName.textContent = company.replace('-', ' ');
-            optionCard.appendChild(buttonName);
+        function showAI(message) {
+            alert(message);
         }
 
-        // Helper function for :contains selector
-        jQuery.expr[':'].contains = function (a, i, m) {
-            return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
-        };
+        function createSomething() {
+            alert('Creating something...');
+            // You can add your creation logic here.
+        }
     </script>
 </body>
 </html>
