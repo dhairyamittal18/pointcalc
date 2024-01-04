@@ -21,20 +21,13 @@
         }
         .options {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
-            align-items: center;
             margin-top: 20px;
-        }
-        .rounded-button {
-            border: none;
-            border-radius: 25px;
-            padding: 15px 30px;
-            font-size: 16px;
-            cursor: pointer;
         }
         .option-card {
             text-align: center;
-            width: 30%;
+            width: 45%;
             border: none;
             border-radius: 50%; /* Make it circular */
             padding: 20px;
@@ -63,11 +56,16 @@
             background-color: lightgreen; /* Change to lightorange if desired */
             color: white;
             cursor: pointer;
-            display: inline-block;
+            display: block;
+            margin: auto;
+            margin-top: 20px;
             transition: transform 0.3s ease-out;
         }
         .rounded-option:hover {
             transform: scale(1.1);
+        }
+        .center {
+            text-align: center;
         }
     </style>
 </head>
@@ -82,11 +80,14 @@
             <div class="option-card" onclick="showAI('Import Team')">Import Team</div>
             <div class="option-card" onclick="showAI('Manage Tourney')">Manage Tourney</div>
         </div>
-        <div class="all-tournaments">
+        <br>
+        <div class="options">
+            <div class="rounded-option center" onclick="createSomething()">Create</div>
+        </div>
+        <div class="all-tournaments center">
             <p>All Tournaments</p>
             <!-- Use PHP to fetch and display tournaments -->
         </div>
-        <div class="rounded-option" onclick="createSomething()">Create</div>
     </div>
 
     <script>
