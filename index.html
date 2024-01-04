@@ -1,6 +1,64 @@
-<html>
-  <body>
-    <p>test</p>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PointCalc</title>
+    <style>
+        body {
+            background-color: lightcoral; /* light red */
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        .content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .option-card {
+            text-align: center;
+            width: 30%;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .symbol-create {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <!-- Leave some space -->
+        <h2>Welcome To PointCalc</h2>
+    </div>
+    <div class="content">
+        <!-- Create Tournament Card Option -->
+        <div class="options">
+            <div class="option-card">Create Tournament</div>
+            <div class="option-card">Import Tourney</div>
+            <div class="option-card">Import Team</div>
+            <div class="option-card">Manage Tourney</div>
+        </div>
+        <!-- Tournaments API -->
+        <div>
+            <p>Tournaments</p>
+            <!-- Use PHP to fetch and display tournaments -->
+        </div>
+        <!-- Symbol Create -->
+        <div class="symbol-create">
+            <!-- Circular option of symbol create -->
+        </div>
+    </div>
 </body>
 </html>
