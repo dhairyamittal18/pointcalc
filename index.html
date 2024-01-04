@@ -28,11 +28,11 @@
         .option-card {
             text-align: center;
             width: 45%;
-            border: none;
-            border-radius: 50%; /* Make it circular */
+            border: 2px solid #2196F3;
+            border-radius: 15px;
             padding: 20px;
-            background-color: lightgreen; /* Change to lightorange if desired */
-            color: white;
+            background-color: white;
+            color: #2196F3;
             cursor: pointer;
             margin-bottom: 20px;
             position: relative;
@@ -53,7 +53,7 @@
             border-radius: 25px;
             padding: 15px 30px;
             font-size: 16px;
-            background-color: lightgreen; /* Change to lightorange if desired */
+            background-color: #2196F3; /* Change to lightorange if desired */
             color: white;
             cursor: pointer;
             display: block;
@@ -77,10 +77,11 @@
         <div class="options">
             <div class="option-card" onclick="showAI('Create Tournament')">Create Tournament</div>
             <div class="option-card" onclick="showAI('Import Tourney')">Import Tourney</div>
+        </div>
+        <div class="options">
             <div class="option-card" onclick="showAI('Import Team')">Import Team</div>
             <div class="option-card" onclick="showAI('Manage Tourney')">Manage Tourney</div>
         </div>
-        <br>
         <div class="options">
             <div class="rounded-option center" onclick="createSomething()">Create</div>
         </div>
