@@ -6,7 +6,7 @@
     <title>PointCalc</title>
     <style>
         body {
-            background-color: lightcoral; /* light red */
+            background-color: lightcoral;
             font-family: Arial, sans-serif;
             margin: 20px;
         }
@@ -21,6 +21,7 @@
         }
         .options {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             margin-top: 20px;
         }
@@ -28,40 +29,85 @@
             text-align: center;
             width: 30%;
             border: none;
-            border-radius: 50%; /* Make it circular */
-            padding: 10px;
-            background-color: darkred; /* Dark red background */
-            color: white; /* White text color */
+            border-radius: 15px;
+            padding: 20px;
+            background-color: darkred;
+            color: white;
             cursor: pointer;
+            margin-bottom: 20px;
+            position: relative;
+            transition: transform 0.3s ease-out;
+        }
+        .option-card:hover {
+            transform: scale(1.1);
+        }
+        .option-card img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 50%;
+        }
+        .button-name {
+            margin-top: 10px;
         }
         .symbol-create {
             text-align: center;
             margin-top: 20px;
         }
+        .floating-button {
+            background-color: darkred;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <!-- Leave some space -->
         <h2>Welcome To PointCalc</h2>
     </div>
     <div class="content">
-        <!-- Create Tournament Card Option -->
         <div class="options">
-            <div class="option-card">Create Tournament</div>
-            <div class="option-card">Import Tourney</div>
-            <div class="option-card">Import Team</div>
-            <div class="option-card">Manage Tourney</div>
+            <div class="option-card" onclick="fetchLogo('create-team')">Create Team</div>
+            <div class="option-card" onclick="fetchLogo('import-tourney')">Import Tourney</div>
+            <div class="option-card" onclick="fetchLogo('import-team')">Import Team</div>
+            <div class="option-card" onclick="fetchLogo('merge-tourney')">Merge Tourney</div>
         </div>
-        <!-- Tournaments API -->
         <div>
-            <p>Tournaments</p>
+            <p>All Tournaments</p>
             <!-- Use PHP to fetch and display tournaments -->
         </div>
-        <!-- Symbol Create -->
         <div class="symbol-create">
             <!-- Circular option of symbol create -->
         </div>
+        <button class="floating-button" id="create-button">Create</button>
     </div>
+
+    <script>
+        function fetchLogo(company) {
+            const apiUrl = `https://getlogoapi.com/api/v1/logos/${company}.png`;
+
+            const imgElement = document.createElement('img');
+            imgElement.src = apiUrl;
+            imgElement.alt = company;
+            const optionCard = document.querySelector(`.option-card:contains('${company}')`);
+            optionCard.innerHTML = '';
+            optionCard.appendChild(imgElement);
+            const buttonName = document.createElement('div');
+            buttonName.classList.add('button-name');
+            buttonName.textContent = company.replace('-', ' ');
+            optionCard.appendChild(buttonName);
+        }
+
+        // Helper function for :contains selector
+        jQuery.expr[':'].contains = function (a, i, m) {
+            return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+        };
+    </script>
 </body>
 </html>
