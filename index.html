@@ -29,7 +29,7 @@
             text-align: center;
             width: 30%;
             border: none;
-            border-radius: 15px;
+            border-radius: 50%; /* Make it circular */
             padding: 20px;
             background-color: darkred;
             color: white;
@@ -64,6 +64,10 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
+            transition: transform 0.3s ease-out;
+        }
+        .floating-button:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
